@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMovement : MonoBehaviour
@@ -15,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
         }    
     }
 
-    private float raycastDistance = 10f;
+    private float raycastDistance = 50f;
     public LayerMask wallLayer;
     public float speedMove = 5f;
 
@@ -25,10 +26,6 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         makeInstance();
-    }
-    void Start()
-    {
-        
     }
 
     void Update()
@@ -77,5 +74,7 @@ public class PlayerMovement : MonoBehaviour
         {
             canMove = false;
         }
-    }    
+    }
+
+     
 }
