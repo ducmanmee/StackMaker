@@ -6,19 +6,30 @@ public class DeActiveBrick : MonoBehaviour
 {
     [SerializeField] private GameObject groundUnBrick;
     [SerializeField] private BoxCollider boxGroundUnBrick;
+    private bool isActiveBrick;
+    private void Awake()
+    {
+        isActiveBrick = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            Destroy(PlayerManager.instance.playerBrickList[PlayerManager.instance.playerBrickList.Count - 1]);
-            PlayerManager.instance.playerBrickList.RemoveAt(PlayerManager.instance.playerBrickList.Count - 1);
-
-            Vector3 temp = PlayerManager.instance.getTransformBody().position;
-            temp.y -= .18f;
-            PlayerManager.instance.setPositionBody(temp);
-
-            groundUnBrick.SetActive(true);
-            Destroy(boxGroundUnBrick);
+            if(isActiveBrick)
+            {
+                if(PlayerManager.instance.playerBrickList.Count > 0)
+                {
+                    isActiveBrick = false;
+                    this.gameObject.SetActive(false);
+                    PlayerManager.instance.unBrick(groundUnBrick, boxGroundUnBrick);
+                }
+                else
+                {
+                    PlayerMovement.instance.canMove = false;
+                    PlayerManager.instance._changeAnim(Constant.WIN);
+                }    
+            }
         }
     }
 }

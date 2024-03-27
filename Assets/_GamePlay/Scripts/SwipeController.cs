@@ -62,9 +62,9 @@ public class SwipeController : MonoBehaviour
         {
             lastPoint = Input.mousePosition;
             direction = lastPoint - firstPoint;
-
-            if (direction.magnitude > 50f)
+            if (direction.magnitude > 50f && GameManager.Instance.canSwipe)
             {
+                PlayerManager.instance.audioSource.PlayOneShot(PlayerManager.instance.swipeClip);
                 deltaX = Mathf.Abs(direction.x);
                 deltaY = Mathf.Abs(direction.y);
 
