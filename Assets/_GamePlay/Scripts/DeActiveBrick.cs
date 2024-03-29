@@ -27,7 +27,8 @@ public class DeActiveBrick : MonoBehaviour
                 else
                 {
                     PlayerMovement.instance.canMove = false;
-                    PlayerManager.instance._changeAnim(Constant.WIN);
+                    PlayerManager.instance.changeAnim(Constant.WIN);
+                    UIManager.Instance.activeNextLvPanel(true);
                 }    
             }
         }

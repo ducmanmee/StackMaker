@@ -4,16 +4,31 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+
+    public static CameraFollow instance; 
+    
     private Vector3 offset;
+    private Vector3 originalPos;
+    private Quaternion originalRotation;
     [SerializeField] private Transform target;
     [SerializeField] private float smoothTime;
     private  Vector3 currentVelocity = Vector3.zero;
     private Vector3 targetPosition;
     private Vector3 winOffset;
 
+    private void makeInstance()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     private void Awake()
     {
+        makeInstance();
+        originalPos = transform.position;
+        originalRotation = transform.rotation;
         offset = transform.position - target.position;
     }
 
@@ -31,8 +46,12 @@ public class CameraFollow : MonoBehaviour
             targetPosition = target.position + winOffset;
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothTime * 2f);
             transform.LookAt(target);
-            Debug.Log(1);
-
         }    
+    }
+
+    public void setOriginalPos()
+    {
+        transform.position = originalPos;
+        transform.rotation = originalRotation;
     }
 }

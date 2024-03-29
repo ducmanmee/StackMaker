@@ -6087,8 +6087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e117c43913fa2459ec5a874b0c2c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isChest: 0
-  chest_open: {fileID: 1502762753808250}
+  chestOpen: {fileID: 1502762753808250}
 --- !u!1 &1098703115403661
 GameObject:
   m_ObjectHideFlags: 0

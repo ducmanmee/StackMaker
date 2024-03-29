@@ -27,13 +27,16 @@ public class PlayerManager : MonoBehaviour
         makeInstance();
     }
 
-    public Transform getTransformBody() => this.transform;
-    public void setPositionBody(Vector3 temp)
+    public void setPosition(Vector3 temp)
     {
         this.transform.position = temp;
     }
+    public void setRotation(Vector3 temp)
+    {
+        this.transform.eulerAngles = temp;
+    }
 
-    public void _changeAnim(string animName)
+    public void changeAnim(string animName)
     {
         if (currentAnim != animName)
         {
@@ -48,7 +51,7 @@ public class PlayerManager : MonoBehaviour
         temp.y += .18f;
         playerBody.transform.position = temp;
         GameObject newPlayerBrick = Instantiate(playerBrick, playerBody.position, Quaternion.Euler(transform.rotation.x - 90f, transform.rotation.y, transform.rotation.z), this.transform);
-        _changeAnim(Constant.TAKEBRICK);
+        changeAnim(Constant.TAKEBRICK);
         playerBrickList.Add(newPlayerBrick);
     }
 
@@ -62,4 +65,9 @@ public class PlayerManager : MonoBehaviour
         groundUnBrick.SetActive(true);
         Destroy(boxGroundUnBrick);
     }
+    
+    public int getBrickListCount()
+    {
+        return playerBrickList.Count;
+    }    
 }

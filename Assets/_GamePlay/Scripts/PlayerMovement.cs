@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         if(Vector3.Distance(this.transform.position, target) < 0.01f)
         {
             canMove = false;
-            PlayerManager.instance._changeAnim(Constant.IDLE);
+            PlayerManager.instance.changeAnim(Constant.IDLE);
         }    
     }
 
