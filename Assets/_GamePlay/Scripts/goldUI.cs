@@ -36,7 +36,7 @@ public class goldUI : MonoBehaviour
     }   
     private void effectAnimGold()
     {
-        transform.position = Vector2.MoveTowards(transform.position, UIManager.Instance.getGoldPlayerTrans().position, 800f * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, UIManager.Instance.getGoldPlayerTrans().position, 2000f * Time.deltaTime);
         if (Vector2.Distance(transform.position, UIManager.Instance.getGoldPlayerTrans().position) < 0.01f)
         {
             Destroy(gameObject);

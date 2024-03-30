@@ -40,11 +40,11 @@ public class UIManager : MonoBehaviour
     public void goldUI(int count)
     {
         isSwarm = true;
-        StartCoroutine(increaseToTargetGold(2f));
         for (int i = 0; i < count; i++)
         {
             Instantiate(gold, goldTransform.position, Quaternion.identity, goldTransform);
         }    
+        StartCoroutine(increaseToTargetGold(2f));
     }  
 
     public Transform getGoldTrans() => goldTransform;
@@ -69,6 +69,6 @@ public class UIManager : MonoBehaviour
     private void updateGoldText(Text updateText ,int value)
     {
         updateText.text = value.ToString();
-    }    
+    }
 
 }

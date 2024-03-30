@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.goldUI(5); 
         yield return new WaitForSeconds(3f);
         isWin = false;
+        StartCoroutine(UIMask.Instance.changeSizeMask());
         createMap(numberOfLevel);
         UIManager.Instance.activeNextLvPanel(isWin);
         CameraFollow.instance.setOriginalPos();
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.goldUI(5);
         yield return new WaitForSeconds(3f);
         isWin = false;
+        StartCoroutine(UIMask.Instance.changeSizeMask());
         numberOfLevel++;
         createMap(numberOfLevel);
         UIManager.Instance.activeNextLvPanel(isWin);
@@ -112,5 +114,5 @@ public class GameManager : MonoBehaviour
     }
 
     public int getGoldWin() => goldWin;
-      
+    
 }
