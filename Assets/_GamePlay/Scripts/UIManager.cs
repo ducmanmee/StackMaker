@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    private void makeInstance()
+    private void MakeInstance()
     {
         if (Instance == null)
         {
@@ -28,45 +28,45 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        makeInstance();
+        MakeInstance();
         isSwarm = false;
     }
 
-    public void activeNextLvPanel(bool isWin)
+    public void ActiveNextLvPanel(bool isWin)
     {
-        updateGoldText(bonusGoldText, GameManager.Instance.getGoldWin());
+        UpdateGoldText(bonusGoldText, GameManager.Instance.GetGoldWin());
         nextLevelPanel.SetActive(isWin);  
     }
-    public void goldUI(int count)
+    public void GoldUI(int count)
     {
         isSwarm = true;
         for (int i = 0; i < count; i++)
         {
             Instantiate(gold, goldTransform.position, Quaternion.identity, goldTransform);
         }    
-        StartCoroutine(increaseToTargetGold(2f));
+        StartCoroutine(IncreaseToTargetGold(2f));
     }  
 
-    public Transform getGoldTrans() => goldTransform;
-    public Transform getGoldPlayerTrans() => goldPlayerTransform;
+    public Transform GetGoldTrans() => goldTransform;
+    public Transform GetGoldPlayerTrans() => goldPlayerTransform;
 
-    IEnumerator increaseToTargetGold(float duration)
+    IEnumerator IncreaseToTargetGold(float duration)
     {
         float time = 0f;
         currentGold = int.Parse(goldText.text);
-        targetGold = currentGold + GameManager.Instance.getGoldWin();
+        targetGold = currentGold + GameManager.Instance.GetGoldWin();
         while ( time < duration)
         {
             currentGold = (int)Mathf.Lerp(currentGold, targetGold, time / duration);
-            updateGoldText(goldText, currentGold);
+            UpdateGoldText(goldText, currentGold);
             time += Time.deltaTime;
             yield return null;
         }    
         currentGold = targetGold; 
-        updateGoldText(goldText, currentGold);
+        UpdateGoldText(goldText, currentGold);
     }    
 
-    private void updateGoldText(Text updateText ,int value)
+    private void UpdateGoldText(Text updateText ,int value)
     {
         updateText.text = value.ToString();
     }

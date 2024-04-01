@@ -17,10 +17,10 @@ public class Chest : MonoBehaviour
         if (Vector3.Distance(PlayerManager.instance.transform.position, this.transform.position) < 2f)
         {
             PlayerMovement.instance.canMove = false;
-            PlayerManager.instance.changeAnim(Constant.WIN);
+            PlayerManager.instance.ChangeAnim(Constant.WIN);
             if(!isChest)
             {
-                GameManager.Instance.StartCoroutine(GameManager.Instance.openChest(chestClose, chestOpen, isChest));
+                GameManager.Instance.StartCoroutine(GameManager.Instance.OpenChest(chestClose, chestOpen, isChest));
             }
         }
     }

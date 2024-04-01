@@ -8,7 +8,7 @@ public class SwipeController : MonoBehaviour
 {
     public static SwipeController instance;
 
-    private void makeInstance()
+    private void MakeInstance()
     {
         if(instance == null)
         {
@@ -34,12 +34,7 @@ public class SwipeController : MonoBehaviour
 
     private void Awake()
     {
-        makeInstance();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
+        MakeInstance();
     }
 
     // Update is called once per frame
@@ -47,11 +42,11 @@ public class SwipeController : MonoBehaviour
     {
         if(!PlayerMovement.instance.canMove)
         {
-            getSwipeDirection();
+            GetSwipeDirection();
         }
     }
 
-    private void getSwipeDirection()
+    private void GetSwipeDirection()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -76,14 +71,14 @@ public class SwipeController : MonoBehaviour
                 {
                     swipeDirection = (direction.y > 0) ? Direct.Forward : Direct.Backward;
                 }
-                _rotatePlayer();
+                RotatePlayer();
                 // tìm target
-                PlayerMovement.instance._CheckWall();
+                PlayerMovement.instance.CheckWall();
             }
         }
     }
 
-    private void _rotatePlayer()
+    private void RotatePlayer()
     {
         if (swipeDirection == Direct.Forward)
         {

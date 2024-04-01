@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public static SwipeController.Direct direction = SwipeController.Direct.Null;
     public static PlayerMovement instance;
-    private void makeInstance()
+    private void MakeInstance()
     {
         if(instance == null)
         {
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        makeInstance();
+        MakeInstance();
     }
 
     void Update()
@@ -38,11 +38,11 @@ public class PlayerMovement : MonoBehaviour
         if(Vector3.Distance(this.transform.position, target) < 0.01f)
         {
             canMove = false;
-            PlayerManager.instance.changeAnim(Constant.IDLE);
+            PlayerManager.instance.ChangeAnim(Constant.IDLE);
         }    
     }
 
-    public void _CheckWall()
+    public void CheckWall()
     {
         Vector3 rayPosition = transform.position;
         Vector3 rayForward = transform.forward;

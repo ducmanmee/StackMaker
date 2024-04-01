@@ -10,7 +10,7 @@ public class goldUI : MonoBehaviour
     void Awake()
     {
         isDone = false;
-        pos = new Vector2(UIManager.Instance.getGoldTrans().position.x, UIManager.Instance.getGoldTrans().position.y) + Random.insideUnitCircle * 100f;
+        pos = new Vector2(UIManager.Instance.GetGoldTrans().position.x, UIManager.Instance.GetGoldTrans().position.y) + Random.insideUnitCircle * 100f;
     }
 
     // Update is called once per frame
@@ -18,15 +18,15 @@ public class goldUI : MonoBehaviour
     {
         if(!isDone)
         {
-            swarmGold();
+            SwarmGold();
         }
         else
         {
-            effectAnimGold();
+            EffectAnimGold();
         }    
     }
 
-    private void swarmGold()
+    private void SwarmGold()
     {
         transform.position = Vector2.MoveTowards(transform.position, pos, 100f * Time.deltaTime);
         if (Vector2.Distance(transform.position, pos) < 0.01f)
@@ -34,10 +34,10 @@ public class goldUI : MonoBehaviour
             isDone = true;
         }
     }   
-    private void effectAnimGold()
+    private void EffectAnimGold()
     {
-        transform.position = Vector2.MoveTowards(transform.position, UIManager.Instance.getGoldPlayerTrans().position, 2000f * Time.deltaTime);
-        if (Vector2.Distance(transform.position, UIManager.Instance.getGoldPlayerTrans().position) < 0.01f)
+        transform.position = Vector2.MoveTowards(transform.position, UIManager.Instance.GetGoldPlayerTrans().position, 2000f * Time.deltaTime);
+        if (Vector2.Distance(transform.position, UIManager.Instance.GetGoldPlayerTrans().position) < 0.01f)
         {
             Destroy(gameObject);
         }

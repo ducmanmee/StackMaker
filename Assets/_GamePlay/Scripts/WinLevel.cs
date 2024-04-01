@@ -10,7 +10,7 @@ public class WinLevel : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            GameManager.Instance.winLevel(winVFX);
+            GameManager.Instance.WinLevel(winVFX);
         }
     }
 }

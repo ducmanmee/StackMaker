@@ -16,7 +16,7 @@ public class UIMask : MonoBehaviour
     private float newWidth;
     private float newHeight;
 
-    private void makeInstance()
+    private void MakeInstance()
     {
         if(Instance == null)
         {
@@ -26,10 +26,10 @@ public class UIMask : MonoBehaviour
 
     private void Awake()
     {
-        makeInstance();
+        MakeInstance();
     }
 
-    public IEnumerator changeSizeMask()
+    public IEnumerator ChangeSizeMask()
     {
         increasing = false;
         isDone = false;

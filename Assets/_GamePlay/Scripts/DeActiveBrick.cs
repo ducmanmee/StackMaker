@@ -22,13 +22,13 @@ public class DeActiveBrick : MonoBehaviour
                 {
                     isActiveBrick = false;
                     this.gameObject.SetActive(false);
-                    PlayerManager.instance.unBrick(groundUnBrick, boxGroundUnBrick);
+                    PlayerManager.instance.UnBrick(groundUnBrick, boxGroundUnBrick);
                 }
                 else
                 {
                     PlayerMovement.instance.canMove = false;
-                    PlayerManager.instance.changeAnim(Constant.WIN);
-                    UIManager.Instance.activeNextLvPanel(true);
+                    PlayerManager.instance.ChangeAnim(Constant.WIN);
+                    UIManager.Instance.ActiveNextLvPanel(true);
                 }    
             }
         }

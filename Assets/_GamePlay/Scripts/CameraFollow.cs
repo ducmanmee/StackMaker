@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 winOffset;
 
-    private void makeInstance()
+    private void MakeInstance()
     {
         if (instance == null)
         {
@@ -26,7 +26,7 @@ public class CameraFollow : MonoBehaviour
 
     private void Awake()
     {
-        makeInstance();
+        MakeInstance();
         originalPos = transform.position;
         originalRotation = transform.rotation;
         offset = transform.position - target.position;
@@ -49,7 +49,7 @@ public class CameraFollow : MonoBehaviour
         }    
     }
 
-    public void setOriginalPos()
+    public void SetOriginalPos()
     {
         transform.position = originalPos;
         transform.rotation = originalRotation;

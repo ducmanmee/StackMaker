@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private GameObject curentLevel;
     private int numberOfLevel = 0;
 
-    private void makeInstance()
+    private void MakeInstance()
     {
         if (Instance == null)
         {
@@ -29,33 +29,33 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         canSwipe = true;
-        createMap(numberOfLevel);
+        CreateMap(numberOfLevel);
         //PlayerManager.instance.gameObject.SetActive(false);
-        makeInstance();
+        MakeInstance();
         
     }
 
-    public void createMap(int level)
+    public void CreateMap(int level)
     {
         Destroy(curentLevel);
-        PlayerManager.instance.setPosition(Vector3.zero);
-        PlayerManager.instance.setRotation(Vector3.zero);
-        PlayerManager.instance.changeAnim(Constant.IDLE);
+        PlayerManager.instance.SetPosition(Vector3.zero);
+        PlayerManager.instance.SetRotation(Vector3.zero);
+        PlayerManager.instance.ChangeAnim(Constant.IDLE);
         curentLevel = Instantiate(levelMap[level], this.transform.position, Quaternion.identity);
         canSwipe = true;
         isNextLevel = true;
         isRestart = true;
     }    
 
-    public void winLevel(GameObject winVFX)
+    public void WinLevel(GameObject winVFX)
     {
         winVFX.SetActive(true);
         isWin = true;
         canSwipe = false;
-        goldWin = PlayerManager.instance.getBrickListCount();
+        goldWin = PlayerManager.instance.GetBrickListCount();
     }
 
-    public IEnumerator openChest(GameObject chestClose, GameObject chestOpen, bool isChest)
+    public IEnumerator OpenChest(GameObject chestClose, GameObject chestOpen, bool isChest)
     {
         isChest = true;
         yield return new WaitForSeconds(4f);
@@ -69,15 +69,15 @@ public class GameManager : MonoBehaviour
             chestOpen.SetActive(true);
         }
         yield return new WaitForSeconds(1f);
-        UIManager.Instance.activeNextLvPanel(isWin);
+        UIManager.Instance.ActiveNextLvPanel(isWin);
     }   
 
-    public void restartLevel()
+    public void RestartLevel()
     {
         if(isRestart)
         {
             isRestart = false;
-            StartCoroutine(restart());
+            StartCoroutine(IERestart());
         }    
     }    
 
@@ -86,33 +86,33 @@ public class GameManager : MonoBehaviour
         if(isNextLevel)
         {
             isNextLevel= false;
-            StartCoroutine(nextLevel());
+            StartCoroutine(IENextLevel());
         }
     }
 
-    IEnumerator restart()
+    IEnumerator IERestart()
     {
-        UIManager.Instance.goldUI(5); 
+        UIManager.Instance.GoldUI(5); 
         yield return new WaitForSeconds(3f);
         isWin = false;
-        StartCoroutine(UIMask.Instance.changeSizeMask());
-        createMap(numberOfLevel);
-        UIManager.Instance.activeNextLvPanel(isWin);
-        CameraFollow.instance.setOriginalPos();
+        StartCoroutine(UIMask.Instance.ChangeSizeMask());
+        CreateMap(numberOfLevel);
+        UIManager.Instance.ActiveNextLvPanel(isWin);
+        CameraFollow.instance.SetOriginalPos();
     }    
 
-    IEnumerator nextLevel()
+    IEnumerator IENextLevel()
     {
-        UIManager.Instance.goldUI(5);
+        UIManager.Instance.GoldUI(5);
         yield return new WaitForSeconds(3f);
         isWin = false;
-        StartCoroutine(UIMask.Instance.changeSizeMask());
+        StartCoroutine(UIMask.Instance.ChangeSizeMask());
         numberOfLevel++;
-        createMap(numberOfLevel);
-        UIManager.Instance.activeNextLvPanel(isWin);
-        CameraFollow.instance.setOriginalPos();
+        CreateMap(numberOfLevel);
+        UIManager.Instance.ActiveNextLvPanel(isWin);
+        CameraFollow.instance.SetOriginalPos();
     }
 
-    public int getGoldWin() => goldWin;
+    public int GetGoldWin() => goldWin;
     
 }

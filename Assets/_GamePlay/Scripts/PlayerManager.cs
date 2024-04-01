@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip swipeClip;
 
-    private void makeInstance()
+    private void MakeInstance()
     {
         if(instance == null)
         {
@@ -24,19 +24,19 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        makeInstance();
+        MakeInstance();
     }
 
-    public void setPosition(Vector3 temp)
+    public void SetPosition(Vector3 temp)
     {
         this.transform.position = temp;
     }
-    public void setRotation(Vector3 temp)
+    public void SetRotation(Vector3 temp)
     {
         this.transform.eulerAngles = temp;
     }
 
-    public void changeAnim(string animName)
+    public void ChangeAnim(string animName)
     {
         if (currentAnim != animName)
         {
@@ -45,17 +45,17 @@ public class PlayerManager : MonoBehaviour
             anim.SetTrigger(currentAnim);
         }
     }
-    public void addBrick()
+    public void AddBrick()
     {
         Vector3 temp = playerBody.transform.position;
         temp.y += .18f;
         playerBody.transform.position = temp;
         GameObject newPlayerBrick = Instantiate(playerBrick, playerBody.position, Quaternion.Euler(transform.rotation.x - 90f, transform.rotation.y, transform.rotation.z), this.transform);
-        changeAnim(Constant.TAKEBRICK);
+        ChangeAnim(Constant.TAKEBRICK);
         playerBrickList.Add(newPlayerBrick);
     }
 
-    public void unBrick(GameObject groundUnBrick, BoxCollider boxGroundUnBrick)
+    public void UnBrick(GameObject groundUnBrick, BoxCollider boxGroundUnBrick)
     {
         Destroy(playerBrickList[playerBrickList.Count - 1]);
         playerBrickList.RemoveAt(playerBrickList.Count - 1);
@@ -66,7 +66,7 @@ public class PlayerManager : MonoBehaviour
         Destroy(boxGroundUnBrick);
     }
     
-    public int getBrickListCount()
+    public int GetBrickListCount()
     {
         return playerBrickList.Count;
     }    

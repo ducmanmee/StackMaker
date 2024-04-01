@@ -10,7 +10,7 @@ public class Brick : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             this.gameObject.SetActive(false);
-            PlayerManager.instance.addBrick();
+            PlayerManager.instance.AddBrick();
         }
     }
 }
