@@ -63,7 +63,6 @@ public class PlayerManager : MonoBehaviour
         temp.y -= .18f;
         playerBody.transform.position = temp;
         groundUnBrick.SetActive(true);
-        Destroy(boxGroundUnBrick);
     }
     
     public int GetBrickListCount()
